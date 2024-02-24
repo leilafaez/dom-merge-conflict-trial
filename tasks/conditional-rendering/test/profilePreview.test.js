@@ -46,7 +46,7 @@ describe("profile preview", () => {
     });
   });
 
-  describe.skip("available option", () => {
+  describe("available option", () => {
     let previewInfo = {};
 
     beforeEach(() => {
