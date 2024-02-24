@@ -19,7 +19,8 @@ export function App() {
   const mainContent = createMainContent();
   body.appendChild(mainContent);
 
-  const button = body.querySelector("#increment");
+  const incrementButton = body.querySelector("#increment");
+  const decrementButton = body.querySelector("#decrement");
   const counter = body.querySelector("#counter");
   incrementButton.addEventListener("click", () => {
     increment(counter);
