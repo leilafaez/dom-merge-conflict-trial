@@ -1,8 +1,7 @@
 export function ProfilePreview(previewInfo) {
   const preview = document.createElement("aside");
-  if (previewInfo.available && previewInfo.profileInfo) {
-    
 
+  if (previewInfo.available && previewInfo.profileInfo) {
     const picture = document.createElement("img");
     picture.src = previewInfo.profileInfo.pictureSrc;
     picture.alt = "";
@@ -12,19 +11,22 @@ export function ProfilePreview(previewInfo) {
     name.textContent = previewInfo.profileInfo.name;
     name.dataset.testid = "profileName";
 
-    const bio = document.createElement("p");
-    bio.textContent = previewInfo.profileInfo.bio;
-    bio.dataset.testid = "profileBio";
-
     preview.appendChild(picture);
     preview.appendChild(name);
-    preview.appendChild(bio);
+
+    if (!previewInfo.shortForm) {
+      const bio = document.createElement("p");
+      bio.textContent = previewInfo.profileInfo.bio;
+      bio.dataset.testid = "profileBio";
+      preview.appendChild(bio);
+    }
 
     return preview;
   } else {
-    const available = document.createElement("p");
-    available.textContent = "Profile preview unavailable.";
-    preview.appendChild(available);
+    const message = document.createElement("p");
+    message.textContent = "Profile preview unavailable.";
+    message.dataset.testid = "profileUnavailable";
+    preview.appendChild(message);
     return preview;
   }
 }
