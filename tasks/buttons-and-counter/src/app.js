@@ -1,3 +1,6 @@
+import { createHeader } from "./header";
+import { createMainContent } from "./main";
+
 //increments the number in a node's text
 function increment(node) {
   let current = node.textContent;
@@ -7,19 +10,11 @@ function increment(node) {
 export function App() {
   const body = document.createElement("body");
 
-  const header = document.createElement("header");
-  header.innerHTML = `
-        <h1>Number Counter</h1>
-        <p>A simple counter. Press increment to increase the count by one.</p>
-    `;
+  const header = createHeader();
   body.appendChild(header);
 
-  const buttonAndCounter = document.createElement("main");
-  buttonAndCounter.innerHTML = `
-        <p id="counter" data-testid="counter">0</p>
-        <button id="increment">Increment</button>
-    `;
-  body.appendChild(buttonAndCounter);
+  const mainContent = createMainContent();
+  body.appendChild(mainContent);
 
   const button = body.querySelector("#increment");
   const counter = body.querySelector("#counter");
